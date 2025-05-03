@@ -21,4 +21,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.SUMMARY_CARDS_TOKEN }}
         with:
-          USERNAME: ${{ github.simi-ajayi }}
+          USERNAME: ${{ github.repository_owner }}
