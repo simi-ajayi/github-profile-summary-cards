@@ -1,24 +1,23 @@
 name: GitHub-Profile-Summary-Cards
 
 on:
+  create:
+  push:
   schedule: # execute every 24 hours
-    - cron: "0 0 * * *"
+    - cron: "* */24 * * *"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: generate-github-profile-summary-cards
+    name: generate-github-cards
     permissions:
       contents: write
-
+      
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
-          # You can use either GITHUB_TOKEN for public repos only
-          # or PERSONAL_ACCESS_TOKEN for including private repos
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.SUMMARY_CARDS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SUMMARY_CARDS_TOKEN }}
         with:
           USERNAME: ${{ github.repository_owner }}
